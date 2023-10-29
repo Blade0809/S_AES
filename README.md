@@ -124,6 +124,53 @@ CBC mode ensures that even if identical blocks of plaintext are encrypted, the o
 
 ## Modules
 
+We introduce some important modules in the algorithm.
+
+### Encrypt
+
+The Simplified Advanced Encryption Standard (S-AES) is a simplified version of the AES encryption algorithm. Here is an explanation of the encryption process in S-AES:
+
+Key Expansion:
+
+S-AES uses an 16-bit key. The first step is to expand this 16-bit key into a set of round keys. In this simplified version, the round keys are derived directly from the original key.
+
+There some other functions such as sub_bytes, shift_rows and so on.
+
+```python
+def encrypt(plaintext, master_key):
+    round_keys = generate_round_keys(master_key)
+    cipher = ''
+    for i in range(4):
+        if plaintext[i] not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']:
+            return 'error, check the input!'
+    if len(plaintext) != 4 or len(master_key) != 4:
+        return 'error, check the input!'
+    for i in range(int(len(plaintext) / 4)):
+        tmp_cipher = ''
+        tmp_plain = plaintext[4 * i:4 * i + 4]
+        tmp_matrix = get_state_matrix(tmp_plain)
+        tmp_matrix = add_round_key(tmp_matrix, round_keys[0])
+
+        tmp_matrix = sub_bytes(tmp_matrix, s_box)
+        tmp_matrix = shift_rows(tmp_matrix)
+        tmp_matrix = mix_columns(tmp_matrix)
+        tmp_matrix = add_round_key(tmp_matrix, round_keys[1])
+
+        tmp_matrix = sub_bytes(tmp_matrix, s_box)
+        tmp_matrix = shift_rows(tmp_matrix)
+        tmp_matrix = add_round_key(tmp_matrix, round_keys[2])
+
+        tmp_cipher += b_to_x(tmp_matrix[0])
+        tmp_cipher += b_to_x(tmp_matrix[2])
+        tmp_cipher += b_to_x(tmp_matrix[1])
+        tmp_cipher += b_to_x(tmp_matrix[3])
+        cipher += tmp_cipher
+    return cipher
+```
+
+
+
+
 
 
 
