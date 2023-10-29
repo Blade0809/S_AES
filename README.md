@@ -212,6 +212,21 @@ def cipher_block_chaining_encrypt(long_plain_text, master_key, IV):
     return cipher
 ```
 
+## Announcements
+
+The Simplified Advanced Encryption Standard (S-AES) has a few notable drawbacks:
+
+Reduced Security: Due to its simplified design, S-AES offers lower security compared to the full AES encryption algorithm. It uses smaller key sizes (8 bits) and operates on smaller data blocks, which makes it more vulnerable to brute-force attacks.
+
+Limited Key Length: S-AES employs an 8-bit key, which provides only 256 possible key combinations. This limited key space makes it susceptible to exhaustive search attacks where an adversary tries every possible key.
+
+Less Resistance to Cryptanalysis: S-AES may be more susceptible to various cryptographic attacks compared to the full AES algorithm. For instance, it may be more vulnerable to differential and linear cryptanalysis due to its simplified substitution and permutation operations.
+
+Not Suitable for High-Security Applications: S-AES is generally not recommended for applications requiring a high level of security, such as securing sensitive financial transactions or classified information. Its simplified structure makes it more suitable for educational purposes or scenarios where lightweight encryption is acceptable.
+
+Not Standardized: S-AES is not an industry-standard encryption algorithm like AES. It may not be supported by widely used cryptographic libraries or hardware, limiting its practical applicability in real-world applications.
+
+Overall, while S-AES serves as a valuable educational tool to understand the core concepts of AES, it is not intended for critical security applications and should be used with caution in scenarios where strong encryption is essential.
 
 
 
