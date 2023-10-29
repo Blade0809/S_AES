@@ -218,7 +218,7 @@ The Simplified Advanced Encryption Standard (S-AES) has a few notable drawbacks:
 
 Reduced Security: Due to its simplified design, S-AES offers lower security compared to the full AES encryption algorithm. It uses smaller key sizes (8 bits) and operates on smaller data blocks, which makes it more vulnerable to brute-force attacks.
 
-Limited Key Length: S-AES employs an 8-bit key, which provides only 256 possible key combinations. This limited key space makes it susceptible to exhaustive search attacks where an adversary tries every possible key.
+Limited Key Length: S-AES employs an 16-bit key, which provides only 65536 possible key combinations. This limited key space makes it susceptible to exhaustive search attacks where an adversary tries every possible key.
 
 Less Resistance to Cryptanalysis: S-AES may be more susceptible to various cryptographic attacks compared to the full AES algorithm. For instance, it may be more vulnerable to differential and linear cryptanalysis due to its simplified substitution and permutation operations.
 
