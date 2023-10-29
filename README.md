@@ -54,6 +54,30 @@ The multiple encryption process in S-AES significantly increases the computation
 
 #### Attack the Middle
 
+In the context of S-AES double encryption, the "Meet-in-the-Middle" attack is a cryptanalysis technique that exploits the vulnerability arising from encrypting a plaintext with two independent keys. Here's an explanation of the Meet-in-the-Middle attack in S-AES double encryption:
+
+Double Encryption Process:
+
+The plaintext is first encrypted with Key 1 to produce an intermediate ciphertext.
+The intermediate ciphertext is then decrypted with Key 2 to produce the final ciphertext.
+Meet-in-the-Middle Attack:
+
+The attacker generates a list of all possible intermediate ciphertexts by encrypting the plaintext with all possible keys (2^16 in the case of 16-bit S-AES).
+
+The attacker also generates a list of all possible results from decrypting the intermediate ciphertext with all possible keys (2^16 again).
+
+Next, the attacker compares the lists to find a matching pair. This means they have found a combination where the encryption and decryption operations cancel each other out, resulting in the original intermediate ciphertext.
+
+Finding Key Combinations:
+
+Once a matching pair is found, the attacker has identified Key 1 and Key 2. This is because Key 1 was used to encrypt the plaintext, and Key 2 was used to decrypt the intermediate ciphertext.
+
+The attacker can then use the identified Key 1 and Key 2 to decrypt the final ciphertext and recover the original plaintext.
+
+Input the plain and the cipher, we can get the possible keys and the cracking time.
+
+<img width="928" alt="截屏2023-10-29 10 49 37" src="https://github.com/Blade0809/S_AES/assets/125954865/19df3a19-5a11-4e0c-8c57-4e9b7e561e36">
+
 #### Trible Encrypt
 
 ### Level 5: Working Mode
