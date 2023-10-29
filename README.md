@@ -92,4 +92,38 @@ We use 32-bit key(k1+k2) to tribble encrypt.
 
 ### Level 5: Working Mode
 
+Cipher Block Chaining (CBC) is a widely used mode of operation for block ciphers, including in the context of the Simplified Advanced Encryption Standard (S-AES). Here's an explanation of how CBC encryption works in S-AES:
+
+CBC mode involves the following steps:
+
+Initialization Vector (IV) Selection: A random IV is generated. The IV is XORed with the first block of plaintext before encryption. This step ensures that even if the same plaintext is encrypted multiple times, the resulting ciphertext will be different due to the unique IV.
+
+Dividing into Blocks: The plaintext message is divided into blocks of a fixed size (in S-AES, this is 16 bits or 2 bytes).
+
+XOR with Previous Block: Each plaintext block (after the first one) is XORed with the ciphertext of the previous block.
+
+Encryption: The XORed result is then encrypted using the S-AES algorithm. The encryption process in S-AES involves substitution, permutation, and mixing operations based on the key.
+
+Ciphertext Output: The resulting ciphertext from each encryption operation becomes the input for the XOR operation in the next round.
+
+Final Ciphertext: The final ciphertext is a series of blocks, each dependent on the encryption of the previous block. The IV, if used, is typically sent along with the ciphertext.
+
+CBC mode ensures that even if identical blocks of plaintext are encrypted, the output will be different due to the XOR operation with the previous ciphertext block. This provides an additional layer of security.
+
+1. Input the correct plaintext and key, we can double encrypt and get the ciphertext.
+
+<img width="928" alt="截屏2023-10-29 10 28 06" src="https://github.com/Blade0809/S_AES/assets/125954865/e85a2173-8dd9-4acb-a8be-806b6c250234">
+
+2. Input the correct ciphertext and key, we can double decrypt and get the plaintext.
+
+<img width="928" alt="截屏2023-10-29 10 28 26" src="https://github.com/Blade0809/S_AES/assets/125954865/ac94bba2-862b-44f4-bceb-11d93893d46e">
+
+3. If we change the order of the plain, for example the first 8 characters, we can see that the cipher is totally different, thus satisfies the CBC.
+
+<img width="928" alt="截屏2023-10-29 10 42 07" src="https://github.com/Blade0809/S_AES/assets/125954865/cde4da7f-bd43-4fdb-b9a4-54ce5a42239c">
+
+## Modules
+
+
+
 
