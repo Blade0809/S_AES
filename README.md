@@ -2,6 +2,7 @@
 ## Homework Report
 ### Level 1: basic test
 GUI: 
+**Since 16-bit binary is too long in sight, we use 4 character hexadecimal instead.**
 
 <img width="928" alt="截屏2023-10-28 21 59 01" src="https://github.com/Blade0809/S_AES/assets/125954865/2d1a9113-a569-47a6-b4fe-05e70f7b2240">
 
@@ -22,5 +23,25 @@ We can see that the plaintext we get through decrypt is the same as the original
 ### Level 2: cross test
 
 ### Level 3: ASCII
+
+1. Input the correct plaintext and key, we can encrypt and get the ciphertext.
+
+<img width="928" alt="截屏2023-10-28 22 11 01" src="https://github.com/Blade0809/S_AES/assets/125954865/3124f794-cce2-43b4-991e-e8de51e7ee84">
+
+2. Input the correct ciphertext and key, we can decrypt and get the plaintext.
+
+<img width="928" alt="截屏2023-10-28 22 13 57" src="https://github.com/Blade0809/S_AES/assets/125954865/0657a2e8-3508-4663-b51c-92208ee45477">
+
+We can see that the plaintext we get through decrypt is the same as the original one, thus **the encrypt and the decrypt are inverse operations**.
+
+### Level 4: Muti-encrypt
+
+#### Double Encrypt
+
+#### Attack the Middle
+
+#### Trible Encrypt
+
+### Level 5: Working Mode
 
 
