@@ -2,6 +2,7 @@
 ## Homework Report
 ### Level 1: basic test
 GUI: 
+
 **Since 16-bit binary is too long in sight, we use 4 character hexadecimal instead.**
 
 <img width="928" alt="截屏2023-10-28 21 59 01" src="https://github.com/Blade0809/S_AES/assets/125954865/2d1a9113-a569-47a6-b4fe-05e70f7b2240">
@@ -168,7 +169,48 @@ def encrypt(plaintext, master_key):
     return cipher
 ```
 
+### Attack the Middle
 
+We simplify the algorithm by using more space of list to save the time.
+
+```python
+def attack_the_middle(plain, cipher):
+    start_time = time.time()
+    keys = []
+    mid_1 = {}
+    mid_2 = {}
+    for i in range(int(math.pow(2, 16))):
+        key_1 = bin(i)[2:].zfill(16)
+        p_1 = encrypt(plain, b_to_x(key_1))
+        mid_1[p_1] = key_1
+    for j in range(int(math.pow(2, 16))):
+        key_2 = bin(j)[2:].zfill(16)
+        p_2 = decrypt(cipher, b_to_x(key_2))
+        mid_2[p_2] = key_2
+    for mid in mid_1.keys():
+        if mid in mid_2.keys():
+            keys.append(b_to_x(mid_1[mid] + mid_2[mid]))
+    end_time = time.time()
+    running_time = end_time - start_time
+    return keys
+```
+
+### Cipher Block Chaining
+
+We set IV as static '1010101010101010'.
+
+```python
+def cipher_block_chaining_encrypt(long_plain_text, master_key, IV):
+    cipher = ''
+    for i in range(int(len(long_plain_text) / 4)):
+        if i == 0:
+            cipher += encrypt(b_to_x(binary_xor(IV, x_to_b(long_plain_text[:4]))), master_key)
+        else:
+            cipher += encrypt(
+                b_to_x(binary_xor(x_to_b(cipher[4 * i - 4:4 * i]), x_to_b(long_plain_text[4 * i:4 * i + 4]))),
+                master_key)
+    return cipher
+```
 
 
 
