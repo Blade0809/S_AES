@@ -1,0 +1,47 @@
+{% load static %}
+<!-- aes_app/templates/aes_app/aes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-AES</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>S-AES</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="text">text：</label>
+        <textarea id="text" name="text" required></textarea><br><br>
+
+        <label for="password">key：</label>
+        <input type="text" id="password" name="password" required><br><br>
+
+        <label for="operation">operation:</label>
+        <select id="operation" name="operation" required>
+            <option value="encrypt">encrypt</option>
+            <option value="decrypt">decrypt</option>
+            <option value="ascii_encrypt">ascii encrypt</option>
+            <option value="ascii_decrypt">ascii decrypt</option>
+            <option value="double_encrypt">double encrypt</option>
+            <option value="double_decrypt">double decrypt</option>
+            <option value="tribble_encrypt">tribble encrypt</option>
+            <option value="tribble_decrypt">tribble decrypt</option>
+            <option value="attack the middle">attack the middle</option>
+            <option value="cipher_block_chaining_encrypt">cipher_block_chaining_encrypt</option>
+            <option value="cipher_block_chaining_decrypt">cipher_block_chaining_decrypt</option>
+        </select><br><br>
+
+        {% if result %}
+            <label for="result">result:</label>
+            <textarea id="result" name="result" readonly>{{ result }}</textarea><br><br>
+        {% endif %}
+
+        <input type="submit" value="submit">
+    </form>
+
+
+</body>
+</html>
