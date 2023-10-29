@@ -78,7 +78,17 @@ Input the plain and the cipher, we can get the possible keys and the cracking ti
 
 <img width="928" alt="截屏2023-10-29 10 49 37" src="https://github.com/Blade0809/S_AES/assets/125954865/19df3a19-5a11-4e0c-8c57-4e9b7e561e36">
 
-#### Trible Encrypt
+#### Tribble Encrypt
+
+We use 32-bit key(k1+k2) to tribble encrypt.
+
+1. Input the correct plaintext and key, we can double encrypt and get the ciphertext.
+
+<img width="928" alt="截屏2023-10-29 10 26 23" src="https://github.com/Blade0809/S_AES/assets/125954865/28007f32-801a-4033-8e3a-f6a348cb34a4">
+
+2. Input the correct ciphertext and key, we can double decrypt and get the plaintext.
+
+<img width="928" alt="截屏2023-10-29 10 26 47" src="https://github.com/Blade0809/S_AES/assets/125954865/8407ca9e-3958-48af-a8f9-bae2445a5153">
 
 ### Level 5: Working Mode
 
