@@ -23,6 +23,10 @@ We can see that the plaintext we get through decrypt is the same as the original
 
 ### Level 2: cross test
 
+![WechatIMG108](https://github.com/Blade0809/S_AES/assets/125954865/7da45de4-e5e0-49b1-b3b9-13180b550486)
+
+We transform binary to hexadecimal and find that it is correct.
+
 ### Level 3: ASCII
 
 1. Input the correct plaintext and key, we can encrypt and get the ciphertext.
